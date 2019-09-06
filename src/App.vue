@@ -10,7 +10,11 @@
 
     <button v-on:click="reverseMessage">Reverse Message</button>
 
+    <router-link to="/">Home!</router-link>
     <router-link to="/login">LOGIN!</router-link>
+    <main class="">  
+      <router-view></router-view>
+    </main>
   </div>
 </template>
 

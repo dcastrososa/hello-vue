@@ -1,12 +1,18 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import App from "./App.vue";
-import Login from "./screen/login/Login.vue";
+
+import routes from '@/router/index.js'
+
 
 Vue.use(VueRouter);
-
-const routes = [{ path: "/login", component: Login }];
-const router = new VueRouter({ routes });
+const router = new VueRouter({
+  routes,
+  mode: 'history'
+})
+/* El parametro mode : 'history', lo que hace es que cuando se cambia de ruta en la URL, no salga "/#/login"
+Osea, evita el "#" en la url
+*/
 
 Vue.config.productionTip = false;
 
