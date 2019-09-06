@@ -1,24 +1,47 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <input type="text" v-model="message" />
+
+    <span v-if="seen">Now you see me</span>
+
+    <ol>
+      <li v-bind:key="todo.text" v-for="todo in todos">{{ todo.text }}</li>
+    </ol>
+
+    <button v-on:click="reverseMessage">Reverse Message</button>
+
+    <router-link to="/login">LOGIN!</router-link>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
 export default {
-  name: 'app',
-  components: {
-    HelloWorld
+  name: "app",
+  data() {
+    return {
+      message: "Hello world!!!!",
+      seen: false,
+      todos: [
+        { text: "Learn JavaScript" },
+        { text: "Learn Vue" },
+        { text: "Build something awesome" }
+      ]
+    };
+  },
+  methods: {
+    reverseMessage: function() {
+      this.message = this.message
+        .split("")
+        .reverse()
+        .join("");
+    }
   }
-}
+};
 </script>
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
